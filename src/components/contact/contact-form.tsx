@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Send, Loader2, CheckCircle2 } from "lucide-react";
+import { Send, Loader2, CheckCircle2, AlertCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type FormState = "idle" | "loading" | "success" | "error";
@@ -49,9 +49,46 @@ export default function ContactForm() {
     }
     setErrors({});
     setFormState("loading");
-    // Simulate async send — replace with actual API call
-    await new Promise((r) => setTimeout(r, 1500));
-    setFormState("success");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: data.get("name"),
+          email: data.get("email"),
+          subject: data.get("subject"),
+          budget: data.get("budget"),
+          message: data.get("message"),
+        }),
+      });
+
+      if (!res.ok) throw new Error("Failed");
+      setFormState("success");
+    } catch {
+      setFormState("error");
+    }
+  }
+
+  if (formState === "error") {
+    return (
+      <div className="flex flex-col items-center justify-center py-16 text-center">
+        <AlertCircle className="w-12 h-12 text-destructive mb-4" />
+        <h3 className="font-heading text-xl font-semibold mb-2">Something went wrong</h3>
+        <p className="text-muted-foreground max-w-sm mb-6">
+          The message couldn&apos;t be sent. Please email me directly at{" "}
+          <a href="mailto:carlosjohnharold@outlook.com" className="text-primary hover:underline">
+            carlosjohnharold@outlook.com
+          </a>
+        </p>
+        <button
+          onClick={() => setFormState("idle")}
+          className="text-sm text-primary hover:underline cursor-pointer"
+        >
+          Try again
+        </button>
+      </div>
+    );
   }
 
   if (formState === "success") {
