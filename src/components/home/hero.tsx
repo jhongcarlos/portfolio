@@ -128,7 +128,7 @@ export default function Hero() {
                   Get In Touch
                 </Link>
                 <a
-                  href="/resume.pdf"
+                  href="/John_Harold_Carlos_Resume.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-5 py-3 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary/60 transition-colors"

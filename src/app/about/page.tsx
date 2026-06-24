@@ -126,7 +126,7 @@ export default function AboutPage() {
               </div>
 
               <a
-                href="/resume.pdf"
+                href="/John_Harold_Carlos_Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg border border-border bg-card text-foreground font-medium hover:bg-secondary transition-colors cursor-pointer"

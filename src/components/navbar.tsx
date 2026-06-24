@@ -93,7 +93,7 @@ export default function Navbar() {
 
           {/* Download Resume CTA */}
           <a
-            href="/resume.pdf"
+            href="/John_Harold_Carlos_Resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="hidden md:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-md border border-border text-sm font-medium text-foreground hover:bg-secondary transition-colors duration-200 cursor-pointer"
@@ -134,7 +134,7 @@ export default function Navbar() {
             ))}
             <li className="mt-2 pt-2 border-t border-border">
               <a
-                href="/resume.pdf"
+                href="/John_Harold_Carlos_Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium border border-border text-foreground hover:bg-secondary transition-colors"
