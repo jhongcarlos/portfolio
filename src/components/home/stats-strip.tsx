@@ -13,7 +13,7 @@ interface Stat {
 
 const stats: Stat[] = [
   { value: 8,  suffix: "+", label: "Years Experience", sub: "Full-stack web development" },
-  { value: 50,  suffix: "+", label: "Active Clients",   sub: "Via Underdog Digital agency" },
+  { value: 25,  suffix: "+", label: "Active Clients",   sub: "Via Underdog Digital agency" },
   { value: 100, suffix: "+", label: "Projects Shipped", sub: "WordPress, web apps, builders" },
   { value: 7,  suffix: "",  label: "CMS Platforms",    sub: "WP, Webflow, Framer & more" },
 ];

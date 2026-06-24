@@ -143,7 +143,7 @@ export default function Hero() {
               <div className="grid grid-cols-4 gap-4 pt-8 border-t border-border/60 max-w-sm">
                 {[
                   { value: "8+",    label: "Years" },
-                  { value: "50+",   label: "Clients" },
+                  { value: "60+",   label: "Clients" },
                   { value: "100+",  label: "Projects" },
                   { value: "7",     label: "Platforms" },
                 ].map((stat) => (
