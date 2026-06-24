@@ -24,6 +24,7 @@ const budgets = [
 export default function ContactForm() {
   const [formState, setFormState] = useState<FormState>("idle");
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [apiError, setApiError] = useState<string>("");
 
   const validate = (data: FormData) => {
     const errs: Record<string, string> = {};
@@ -48,6 +49,7 @@ export default function ContactForm() {
       return;
     }
     setErrors({});
+    setApiError("");
     setFormState("loading");
 
     try {
@@ -63,9 +65,11 @@ export default function ContactForm() {
         }),
       });
 
-      if (!res.ok) throw new Error("Failed");
+      const json = await res.json();
+      if (!res.ok) throw new Error(json?.error || "Failed to send.");
       setFormState("success");
-    } catch {
+    } catch (err) {
+      setApiError(err instanceof Error ? err.message : "Something went wrong.");
       setFormState("error");
     }
   }
@@ -75,8 +79,11 @@ export default function ContactForm() {
       <div className="flex flex-col items-center justify-center py-16 text-center">
         <AlertCircle className="w-12 h-12 text-destructive mb-4" />
         <h3 className="font-heading text-xl font-semibold mb-2">Something went wrong</h3>
+        {apiError && (
+          <p className="text-sm text-destructive mb-2 font-mono">{apiError}</p>
+        )}
         <p className="text-muted-foreground max-w-sm mb-6">
-          The message couldn&apos;t be sent. Please email me directly at{" "}
+          Please email me directly at{" "}
           <a href="mailto:carlosjohnharold@outlook.com" className="text-primary hover:underline">
             carlosjohnharold@outlook.com
           </a>
