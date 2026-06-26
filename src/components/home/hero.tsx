@@ -51,7 +51,7 @@ export default function Hero() {
       {/* Top vignette */}
       <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-background to-transparent pointer-events-none" />
 
-      <div className="relative z-10 flex flex-col items-center text-center max-w-3xl mx-auto px-6 sm:px-8 py-20">
+      <div className="relative z-10 flex flex-col items-center text-center max-w-[70rem] mx-auto px-6 sm:px-8 py-20">
 
         {/* Badge */}
         <motion.div {...fadeUp(0.05)} className="mb-8">
