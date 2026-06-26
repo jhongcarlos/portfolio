@@ -83,21 +83,6 @@ export const projects: Project[] = [
   },
   // ─── Webflow & Builders ───────────────────────────────────────────────────
   {
-    slug: "pb-roofing",
-    title: "PB Roofing",
-    url: "https://roofingpb.com",
-    category: ["webflow-builders"],
-    stack: ["Webflow", "SEO", "On-page optimization"],
-    client: "Local roofing contractor · Odessa & Midland, Texas",
-    description:
-      "Designed and built a clean, conversion-optimized Webflow site for a local roofing company serving Odessa and Midland, Texas. Focused on local SEO, service page structure, and clear CTAs to drive roof inspection and replacement requests.",
-    highlight: "Local service business, Webflow build, local SEO optimization.",
-    image: "https://images.unsplash.com/photo-1516156008625-3a9d6067fab5?w=800&h=450&fit=crop&auto=format",
-    accentColor: "from-amber-500/20 to-orange-600/10",
-    featured: false,
-    isConfidential: false,
-  },
-  {
     slug: "humanise-design",
     title: "Humanise Design",
     url: "https://humanise.design",

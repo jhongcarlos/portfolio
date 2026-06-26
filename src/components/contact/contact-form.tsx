@@ -237,7 +237,7 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={formState === "loading"}
-        className="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground font-medium hover:opacity-90 disabled:opacity-60 transition-opacity cursor-pointer"
+        className="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-white text-black font-medium hover:opacity-90 disabled:opacity-60 transition-opacity cursor-pointer shadow-[0_0_0_1px_rgba(0,0,0,0.08),0_4px_16px_rgba(0,0,0,0.12)]"
       >
         {formState === "loading" ? (
           <>

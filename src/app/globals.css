@@ -186,9 +186,6 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 
-.mesh-blob-1 { animation: mesh-drift-1 14s ease-in-out infinite; }
-.mesh-blob-2 { animation: mesh-drift-2 18s ease-in-out infinite; }
-.mesh-blob-3 { animation: mesh-drift-3 22s ease-in-out infinite; }
 .glow-pulse  { animation: glow-pulse 3s ease-in-out infinite; }
 
 /* ── Shimmer ── */
@@ -242,6 +239,7 @@ select option {
   background-color: oklch(0.11 0.018 30);
   color: oklch(0.95 0.006 30);
 }
+
 
 /* ── Scrollbar ── */
 ::-webkit-scrollbar { width: 5px; }

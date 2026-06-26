@@ -13,7 +13,7 @@ export const skillCategories: SkillCategory[] = [
   {
     category: "Frameworks",
     color: "purple",
-    skills: ["React.js", "Next.js", "Laravel", "CodeIgniter", "Bootstrap"],
+    skills: ["React.js", "Next.js", "Laravel", "CodeIgniter", "Bootstrap", "Tailwind CSS"],
   },
   {
     category: "CMS & Builders",
@@ -72,5 +72,12 @@ export const techLogoBar = [
   "Umbraco",
   "AWS",
   "Cloudflare",
+  "Tailwind CSS",
   "Git",
+  "GoDaddy",
+  "Claude",
+  "Google Analytics",
+  "SEMrush",
+  "Canva",
+  "Gemini",
 ];
