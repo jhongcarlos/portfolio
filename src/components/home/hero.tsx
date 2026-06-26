@@ -9,12 +9,6 @@ const ease = [0.21, 0.47, 0.32, 0.98] as const;
 
 const rotatingTitles = ["WordPress Expert", "React Developer", "Agency Partner"];
 
-const STACK = [
-  "WordPress", "React", "Next.js", "PHP", "Laravel", "AWS",
-  "Webflow", "Framer", "GoHighLevel", "MySQL", "Elementor", "Umbraco",
-  "WordPress", "React", "Next.js", "PHP", "Laravel", "AWS",
-  "Webflow", "Framer", "GoHighLevel", "MySQL", "Elementor", "Umbraco",
-];
 
 const AVATARS = [
   { bg: "bg-orange-400", initials: "AC" },
@@ -169,35 +163,6 @@ export default function Hero() {
           </div>
         </motion.div>
       </div>
-
-      {/* ── Scrolling marquee ── */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.7, duration: 0.6 }}
-        className="relative z-10 w-full overflow-hidden pb-10"
-      >
-        <div className="flex gap-0">
-          <motion.div
-            animate={{ x: ["0%", "-50%"] }}
-            transition={{ duration: 28, repeat: Infinity, ease: "linear" }}
-            className="flex items-center gap-6 whitespace-nowrap will-change-transform"
-          >
-            {STACK.map((tech, i) => (
-              <span key={i} className="flex items-center gap-6">
-                <span className="text-sm font-mono text-muted-foreground/50 hover:text-muted-foreground transition-colors">
-                  {tech}
-                </span>
-                <span className="text-border text-xs">✦</span>
-              </span>
-            ))}
-          </motion.div>
-        </div>
-
-        {/* Fade edges */}
-        <div className="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-background to-transparent pointer-events-none" />
-        <div className="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-background to-transparent pointer-events-none" />
-      </motion.div>
 
     </section>
   );
