@@ -58,7 +58,7 @@ export default function ProjectsClient() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={`Visit ${project.title}`}
-                      className="opacity-0 group-hover:opacity-100 p-1.5 rounded-full border border-gray-200 text-muted-foreground hover:text-foreground transition-all cursor-pointer"
+                      className="opacity-0 group-hover:opacity-100 p-1.5 rounded-full border border-border text-muted-foreground hover:text-foreground transition-all cursor-pointer"
                     >
                       <ExternalLink className="w-3.5 h-3.5" />
                     </a>

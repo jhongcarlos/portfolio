@@ -33,7 +33,7 @@ export const projects: Project[] = [
     highlight: "High-traffic production site with real user base — security, performance, and uptime critical.",
     image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&h=450&fit=crop&auto=format",
     accentColor: "from-rose-500/20 to-pink-600/10",
-    featured: true,
+    featured: false,
     isConfidential: false,
   },
   {
@@ -125,7 +125,7 @@ export const projects: Project[] = [
     highlight: "Full-stack, end-to-end ownership, real user transactions, API integrations.",
     image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&h=450&fit=crop&auto=format",
     accentColor: "from-emerald-500/20 to-teal-600/10",
-    featured: false,
+    featured: true,
     isConfidential: false,
   },
   // ─── Internal Tools ───────────────────────────────────────────────────────
