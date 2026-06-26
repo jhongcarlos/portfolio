@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { ScrollFadeIn } from "@/components/motion-wrapper";
 import { Badge } from "@/components/ui/badge";
-import { MapPin, Briefcase, GraduationCap, Download, ExternalLink, ArrowRight } from "lucide-react";
+import { MapPin, GraduationCap, Download, ExternalLink, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { skillCategories } from "@/data/skills";
 import { experiences, education } from "@/data/experience";
