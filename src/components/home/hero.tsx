@@ -8,77 +8,96 @@ const ease = [0.21, 0.47, 0.32, 0.98] as const;
 
 function fadeUp(delay: number) {
   return {
-    initial: { opacity: 0, y: 20 },
+    initial: { opacity: 0, y: 16 },
     animate: { opacity: 1, y: 0 },
     transition: { duration: 0.55, delay, ease },
   };
 }
 
+const STATS = [
+  { value: "8+",   label: "Years" },
+  { value: "60+",  label: "Clients" },
+  { value: "100+", label: "Projects" },
+  { value: "7",    label: "Platforms" },
+];
+
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center pt-16 overflow-hidden bg-background">
+    <section className="relative min-h-screen flex items-center justify-center pt-16 overflow-hidden bg-background">
 
-      {/* Background orbs */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-[-20%] right-[-5%] w-[700px] h-[700px] rounded-full blur-[150px] opacity-[0.12]"
-          style={{ background: "oklch(0.55 0.24 30)" }} />
-        <div className="absolute bottom-[-15%] left-[-5%] w-[500px] h-[500px] rounded-full blur-[130px] opacity-[0.07]"
-          style={{ background: "oklch(0.58 0.20 264)" }} />
-      </div>
+      {/* Spotlight glow — centered behind headline */}
+      <div
+        className="absolute pointer-events-none"
+        style={{
+          top: "15%",
+          left: "50%",
+          transform: "translateX(-50%)",
+          width: 800,
+          height: 600,
+          background: "radial-gradient(ellipse at center, oklch(0.55 0.24 30 / 0.13) 0%, transparent 70%)",
+          filter: "blur(1px)",
+        }}
+      />
 
-      <div className="relative z-10 w-full max-w-5xl mx-auto px-6 sm:px-8">
+      {/* Subtle noise grid */}
+      <div
+        className="absolute inset-0 opacity-[0.022] pointer-events-none"
+        style={{
+          backgroundImage: "radial-gradient(circle, currentColor 1px, transparent 1px)",
+          backgroundSize: "28px 28px",
+        }}
+      />
 
-        {/* Available pill */}
-        <motion.div {...fadeUp(0.05)} className="mb-10">
-          <span className="inline-flex items-center gap-2 text-xs font-mono text-muted-foreground tracking-widest uppercase">
+      {/* Top vignette */}
+      <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-background to-transparent pointer-events-none" />
+
+      <div className="relative z-10 flex flex-col items-center text-center max-w-3xl mx-auto px-6 sm:px-8 py-20">
+
+        {/* Badge */}
+        <motion.div {...fadeUp(0.05)} className="mb-8">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/[0.04] text-xs font-medium text-muted-foreground backdrop-blur-sm">
             <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-            Available for Work
+            Available for Work · Manila, Philippines
           </span>
         </motion.div>
 
-        {/* Name — the focal point */}
-        <motion.div {...fadeUp(0.12)}>
-          <h1 className="font-heading font-bold leading-[0.92] tracking-tight mb-8">
-            <span className="block text-[clamp(3.8rem,11vw,8rem)] text-foreground">
-              John
-            </span>
-            <span className="block text-[clamp(3.8rem,11vw,8rem)] text-foreground">
-              Harold
-            </span>
-            <span className="block text-[clamp(3.8rem,11vw,8rem)] gradient-text">
-              Carlos.
-            </span>
-          </h1>
-        </motion.div>
-
-        {/* Role + meta — horizontal, understated */}
-        <motion.div {...fadeUp(0.22)}>
-          <p className="text-sm font-mono text-muted-foreground tracking-widest uppercase mb-6">
-            Full-Stack Developer &nbsp;·&nbsp; 8+ Years &nbsp;·&nbsp; Manila, Philippines
-          </p>
-        </motion.div>
-
-        {/* One-liner */}
-        <motion.p
-          {...fadeUp(0.30)}
-          className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-xl mb-10"
+        {/* Headline */}
+        <motion.h1
+          {...fadeUp(0.15)}
+          className="font-heading font-bold tracking-tight leading-[1.06] mb-6"
         >
-          I build fast, scalable websites and web applications for agencies and
-          enterprise clients across the US, Singapore, and Philippines.
+          <span className="block text-[clamp(2.8rem,7vw,5rem)] text-white/90">
+            Full-Stack Web Developer
+          </span>
+          <span className="block text-[clamp(2.8rem,7vw,5rem)] gradient-text">
+            for agencies that ship.
+          </span>
+        </motion.h1>
+
+        {/* Description */}
+        <motion.p
+          {...fadeUp(0.25)}
+          className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-xl mb-10"
+        >
+          8+ years building WordPress sites, web apps, and everything
+          in between — for clients across the{" "}
+          <span className="text-white/80">US</span>,{" "}
+          <span className="text-white/80">Singapore</span>, and{" "}
+          <span className="text-white/80">Philippines</span>.
         </motion.p>
 
         {/* CTAs */}
-        <motion.div {...fadeUp(0.38)} className="flex flex-wrap items-center gap-4">
+        <motion.div {...fadeUp(0.33)} className="flex flex-wrap items-center justify-center gap-3 mb-16">
           <Link
             href="/projects"
-            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-primary text-white font-semibold text-sm hover:opacity-90 transition-opacity shadow-lg shadow-primary/20 cursor-pointer"
+            className="group inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-primary text-white font-semibold text-sm hover:opacity-90 transition-opacity shadow-[0_0_24px_oklch(0.55_0.24_30_/_0.35)] cursor-pointer"
           >
             View My Work
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
           </Link>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full border border-border bg-card text-foreground font-semibold text-sm hover:bg-secondary transition-colors cursor-pointer"
+            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full border border-white/10 bg-white/[0.04] text-white/80 font-semibold text-sm hover:bg-white/[0.08] hover:text-white transition-all cursor-pointer backdrop-blur-sm"
           >
             Get In Touch
           </Link>
@@ -86,14 +105,33 @@ export default function Hero() {
             href="/John_Harold_Carlos_Resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 px-4 py-3.5 text-sm text-muted-foreground hover:text-white transition-colors cursor-pointer"
           >
-            <Download className="w-4 h-4" />
+            <Download className="w-3.5 h-3.5" />
             Resume
           </a>
         </motion.div>
 
+        {/* Stats row */}
+        <motion.div
+          {...fadeUp(0.42)}
+          className="flex items-center justify-center gap-8 sm:gap-12"
+        >
+          {STATS.map((s, i) => (
+            <div key={s.label}>
+              <div className="font-heading font-bold text-2xl sm:text-3xl gradient-text leading-none mb-1">
+                {s.value}
+              </div>
+              <div className="text-xs text-muted-foreground tracking-wide">{s.label}</div>
+            </div>
+          ))}
+        </motion.div>
+
       </div>
+
+      {/* Bottom fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent pointer-events-none" />
+
     </section>
   );
 }
