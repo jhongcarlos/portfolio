@@ -9,13 +9,13 @@ export const metadata: Metadata = {
 
 export default function ProjectsPage() {
   return (
-    <div className="pt-16">
+    <div className="pt-16 bg-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
         <div className="mb-12">
           <p className="text-sm font-mono text-primary mb-2 tracking-widest uppercase">
             Portfolio
           </p>
-          <h1 className="font-heading text-4xl sm:text-5xl font-semibold mb-4">
+          <h1 className="font-heading text-4xl sm:text-5xl font-bold mb-4 text-foreground">
             Projects
           </h1>
           <p className="text-muted-foreground text-lg max-w-xl">

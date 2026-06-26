@@ -1,14 +1,7 @@
 import { Metadata } from "next";
 import { ScrollFadeIn } from "@/components/motion-wrapper";
 import { Badge } from "@/components/ui/badge";
-import { Separator } from "@/components/ui/separator";
-import {
-  MapPin,
-  Briefcase,
-  GraduationCap,
-  Download,
-  ExternalLink,
-} from "lucide-react";
+import { MapPin, Briefcase, GraduationCap, Download, ExternalLink } from "lucide-react";
 import { skillCategories } from "@/data/skills";
 import { experiences, education } from "@/data/experience";
 
@@ -19,17 +12,17 @@ export const metadata: Metadata = {
 };
 
 const colorMap: Record<string, string> = {
-  blue: "bg-blue-500/10 text-blue-400 border-blue-500/20",
-  purple: "bg-purple-500/10 text-purple-400 border-purple-500/20",
-  green: "bg-green-500/10 text-green-400 border-green-500/20",
-  orange: "bg-orange-500/10 text-orange-400 border-orange-500/20",
-  cyan: "bg-cyan-500/10 text-cyan-400 border-cyan-500/20",
-  pink: "bg-pink-500/10 text-pink-400 border-pink-500/20",
+  blue:   "bg-blue-50 text-blue-600 border-blue-200",
+  purple: "bg-purple-50 text-purple-600 border-purple-200",
+  green:  "bg-green-50 text-green-600 border-green-200",
+  orange: "bg-orange-50 text-orange-600 border-orange-200",
+  cyan:   "bg-cyan-50 text-cyan-600 border-cyan-200",
+  pink:   "bg-pink-50 text-pink-600 border-pink-200",
 };
 
 export default function AboutPage() {
   return (
-    <div className="pt-16">
+    <div className="pt-16 bg-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
 
         {/* Bio section */}
@@ -39,7 +32,7 @@ export default function AboutPage() {
               <p className="text-sm font-mono text-primary mb-2 tracking-widest uppercase">
                 About Me
               </p>
-              <h1 className="font-heading text-4xl sm:text-5xl font-semibold mb-6 leading-tight">
+              <h1 className="font-heading text-4xl sm:text-5xl font-bold mb-6 leading-tight text-foreground">
                 Developer, problem-solver,{" "}
                 <span className="gradient-text">builder.</span>
               </h1>
@@ -82,28 +75,26 @@ export default function AboutPage() {
             </div>
 
             {/* Stats + availability */}
-            <div className="flex flex-col gap-5">
-              <div className="p-6 rounded-xl border border-border bg-card">
+            <div className="flex flex-col gap-4">
+              <div className="p-6 rounded-2xl border border-gray-100 bg-white shadow-sm">
                 <div className="grid grid-cols-2 gap-6">
                   {[
-                    { value: "8+", label: "Years of Experience" },
+                    { value: "8+",    label: "Years of Experience" },
                     { value: "25–30", label: "Active Clients" },
-                    { value: "50+", label: "Projects Delivered" },
-                    { value: "7", label: "CMS Platforms" },
+                    { value: "50+",   label: "Projects Delivered" },
+                    { value: "7",     label: "CMS Platforms" },
                   ].map((stat) => (
                     <div key={stat.label}>
-                      <div className="font-heading text-3xl font-semibold gradient-text mb-1">
+                      <div className="font-heading text-3xl font-bold gradient-text mb-1">
                         {stat.value}
                       </div>
-                      <div className="text-sm text-muted-foreground">
-                        {stat.label}
-                      </div>
+                      <div className="text-sm text-muted-foreground">{stat.label}</div>
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div className="p-6 rounded-xl border border-border bg-card">
+              <div className="p-6 rounded-2xl border border-gray-100 bg-white shadow-sm">
                 <h3 className="text-xs font-mono text-muted-foreground uppercase tracking-widest mb-3">
                   Currently Available For
                 </h3>
@@ -114,10 +105,7 @@ export default function AboutPage() {
                     "Agency dev partnerships",
                     "Technical consulting & code reviews",
                   ].map((item) => (
-                    <li
-                      key={item}
-                      className="flex items-center gap-2 text-muted-foreground"
-                    >
+                    <li key={item} className="flex items-center gap-2 text-muted-foreground">
                       <span className="w-1.5 h-1.5 rounded-full bg-green-500 flex-shrink-0" />
                       {item}
                     </li>
@@ -129,7 +117,7 @@ export default function AboutPage() {
                 href="/John_Harold_Carlos_Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg border border-border bg-card text-foreground font-medium hover:bg-secondary transition-colors cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-gray-200 bg-white text-foreground font-semibold text-sm hover:bg-gray-50 transition-colors cursor-pointer shadow-sm"
               >
                 <Download className="w-4 h-4" />
                 Download Resume (PDF)
@@ -141,14 +129,15 @@ export default function AboutPage() {
         {/* Skills grid */}
         <ScrollFadeIn>
           <div className="mb-20">
-            <h2 className="font-heading text-2xl font-semibold mb-8">
-              Skills &amp; Technologies
+            <p className="text-sm font-mono text-primary mb-2 tracking-widest uppercase">Skills</p>
+            <h2 className="font-heading text-2xl sm:text-3xl font-bold mb-8 text-foreground">
+              Technologies &amp; Expertise
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {skillCategories.map((cat) => (
                 <div
                   key={cat.category}
-                  className="p-5 rounded-xl border border-border bg-card"
+                  className="p-5 rounded-2xl border border-gray-100 bg-white shadow-sm"
                 >
                   <h3 className="text-xs font-mono text-muted-foreground uppercase tracking-widest mb-3">
                     {cat.category}
@@ -158,7 +147,7 @@ export default function AboutPage() {
                       <Badge
                         key={skill}
                         variant="outline"
-                        className={`text-xs font-mono border ${colorMap[cat.color]}`}
+                        className={`text-xs font-mono border rounded-full ${colorMap[cat.color]}`}
                       >
                         {skill}
                       </Badge>
@@ -170,56 +159,52 @@ export default function AboutPage() {
           </div>
         </ScrollFadeIn>
 
-        <Separator className="mb-20" />
+        <div className="border-t border-gray-100 mb-20" />
 
         {/* Experience timeline */}
         <ScrollFadeIn>
-          <h2 className="font-heading text-2xl font-semibold mb-10">
+          <p className="text-sm font-mono text-primary mb-2 tracking-widest uppercase">Career</p>
+          <h2 className="font-heading text-2xl sm:text-3xl font-bold mb-10 text-foreground">
             Experience
           </h2>
         </ScrollFadeIn>
 
         <div className="relative mb-20">
-          <div className="absolute left-4 top-0 bottom-0 w-px bg-border hidden sm:block" />
+          <div className="absolute left-4 top-0 bottom-0 w-px bg-gray-100 hidden sm:block" />
 
-          <div className="space-y-5">
+          <div className="space-y-4">
             {experiences.map((item, idx) => (
               <ScrollFadeIn key={item.company + item.period} delay={idx * 0.06}>
                 <div className="sm:pl-12 relative">
-                  {/* Timeline dot */}
-                  <div className="absolute left-2 top-4 w-5 h-5 rounded-full border-2 border-primary bg-background hidden sm:flex items-center justify-center">
+                  <div className="absolute left-2 top-4 w-5 h-5 rounded-full border-2 border-primary bg-white hidden sm:flex items-center justify-center shadow-sm">
                     <Briefcase className="w-2.5 h-2.5 text-primary" />
                   </div>
 
-                  <div className="p-5 rounded-xl border border-border bg-card card-hover">
+                  <div className="p-5 rounded-2xl border border-gray-100 bg-white shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
                     <div className="flex flex-wrap items-start justify-between gap-2 mb-1">
                       <div>
-                        <div className="flex items-center gap-1.5">
-                          <h3 className="font-heading font-semibold">
-                            {item.url ? (
-                              <a
-                                href={item.url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="hover:text-primary transition-colors inline-flex items-center gap-1"
-                              >
-                                {item.company}
-                                <ExternalLink className="w-3 h-3 text-muted-foreground" />
-                              </a>
-                            ) : (
-                              item.company
-                            )}
-                          </h3>
-                        </div>
-                        <p className="text-sm text-primary">{item.role}</p>
+                        <h3 className="font-heading font-semibold text-foreground">
+                          {item.url ? (
+                            <a
+                              href={item.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="hover:text-primary transition-colors inline-flex items-center gap-1"
+                            >
+                              {item.company}
+                              <ExternalLink className="w-3 h-3 text-muted-foreground" />
+                            </a>
+                          ) : (
+                            item.company
+                          )}
+                        </h3>
+                        <p className="text-sm text-primary font-medium">{item.role}</p>
                       </div>
                       <div className="text-right">
                         <span className="text-xs font-mono text-muted-foreground whitespace-nowrap">
                           {item.period}
                         </span>
-                        <p className="text-xs text-muted-foreground/60 mt-0.5">
-                          {item.location}
-                        </p>
+                        <p className="text-xs text-muted-foreground/60 mt-0.5">{item.location}</p>
                       </div>
                     </div>
                     <p className="text-sm text-muted-foreground leading-relaxed mt-2">
@@ -234,24 +219,21 @@ export default function AboutPage() {
 
         {/* Education */}
         <ScrollFadeIn>
-          <h2 className="font-heading text-2xl font-semibold mb-6">
-            Education
+          <p className="text-sm font-mono text-primary mb-2 tracking-widest uppercase">Education</p>
+          <h2 className="font-heading text-2xl sm:text-3xl font-bold mb-6 text-foreground">
+            Academic Background
           </h2>
           <div className="sm:pl-12 relative">
-            <div className="absolute left-2 top-4 w-5 h-5 rounded-full border-2 border-primary/60 bg-background hidden sm:flex items-center justify-center">
+            <div className="absolute left-2 top-4 w-5 h-5 rounded-full border-2 border-primary/50 bg-white hidden sm:flex items-center justify-center shadow-sm">
               <GraduationCap className="w-2.5 h-2.5 text-primary/60" />
             </div>
-            <div className="p-5 rounded-xl border border-border bg-card">
+            <div className="p-5 rounded-2xl border border-gray-100 bg-white shadow-sm">
               <div className="flex flex-wrap items-start justify-between gap-2">
                 <div>
-                  <h3 className="font-heading font-semibold">
-                    {education.degree}
-                  </h3>
-                  <p className="text-sm text-primary">{education.school}</p>
+                  <h3 className="font-heading font-semibold text-foreground">{education.degree}</h3>
+                  <p className="text-sm text-primary font-medium">{education.school}</p>
                 </div>
-                <span className="text-xs font-mono text-muted-foreground">
-                  {education.period}
-                </span>
+                <span className="text-xs font-mono text-muted-foreground">{education.period}</span>
               </div>
             </div>
           </div>

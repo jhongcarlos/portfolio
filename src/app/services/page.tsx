@@ -1,23 +1,25 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import {
-  Globe,
-  Code2,
-  Layout,
-  TrendingUp,
-  Wrench,
-  Sparkles,
-  CheckCircle2,
-  ArrowRight,
+  Globe, Code2, Layout, TrendingUp, Wrench, Sparkles,
+  CheckCircle2, ArrowRight,
 } from "lucide-react";
 import { ScrollFadeIn } from "@/components/motion-wrapper";
 import { Badge } from "@/components/ui/badge";
-import { Separator } from "@/components/ui/separator";
 
 export const metadata: Metadata = {
   title: "Services — John Harold Carlos",
   description:
     "WordPress development, web app development, CMS builds, SEO, maintenance, and AI-assisted development by John Harold Carlos.",
+};
+
+const iconColors: Record<string, string> = {
+  "WordPress Development":    "bg-sky-100 text-sky-600",
+  "Web App Development":      "bg-violet-100 text-violet-600",
+  "CMS & Website Builders":   "bg-amber-100 text-amber-600",
+  "SEO & Performance":        "bg-green-100 text-green-600",
+  "Website Maintenance":      "bg-orange-100 text-orange-600",
+  "AI-Assisted Development":  "bg-pink-100 text-pink-600",
 };
 
 const services = [
@@ -142,7 +144,7 @@ const process = [
 
 export default function ServicesPage() {
   return (
-    <div className="pt-16">
+    <div className="pt-16 bg-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
 
         {/* Header */}
@@ -151,7 +153,7 @@ export default function ServicesPage() {
             <p className="text-sm font-mono text-primary mb-2 tracking-widest uppercase">
               Services
             </p>
-            <h1 className="font-heading text-4xl sm:text-5xl font-semibold mb-4">
+            <h1 className="font-heading text-4xl sm:text-5xl font-bold mb-4 text-foreground">
               Let&apos;s Build Something Together
             </h1>
             <p className="text-muted-foreground text-lg leading-relaxed">
@@ -162,15 +164,15 @@ export default function ServicesPage() {
         </ScrollFadeIn>
 
         {/* Services grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-24">
           {services.map((service, idx) => (
             <ScrollFadeIn key={service.title} delay={idx * 0.07}>
-              <div className="flex flex-col p-7 rounded-xl border border-border bg-card card-hover h-full">
-                <div className="w-11 h-11 rounded-lg bg-primary/10 flex items-center justify-center mb-5">
-                  <service.icon className="w-5 h-5 text-primary" />
+              <div className="flex flex-col p-7 rounded-2xl border border-gray-100 bg-white shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 h-full">
+                <div className={`w-11 h-11 rounded-xl ${iconColors[service.title]} flex items-center justify-center mb-5`}>
+                  <service.icon className="w-5 h-5" />
                 </div>
 
-                <h2 className="font-heading text-xl font-semibold mb-2">
+                <h2 className="font-heading text-xl font-bold mb-2 text-foreground">
                   {service.title}
                 </h2>
                 <p className="text-muted-foreground text-sm leading-relaxed mb-5 flex-1">
@@ -183,10 +185,7 @@ export default function ServicesPage() {
                   </h3>
                   <ul className="space-y-1.5">
                     {service.deliverables.map((d) => (
-                      <li
-                        key={d}
-                        className="flex items-center gap-2 text-sm text-muted-foreground"
-                      >
+                      <li key={d} className="flex items-center gap-2 text-sm text-muted-foreground">
                         <CheckCircle2 className="w-3.5 h-3.5 text-primary flex-shrink-0" />
                         {d}
                       </li>
@@ -196,11 +195,7 @@ export default function ServicesPage() {
 
                 <div className="flex flex-wrap gap-1.5">
                   {service.tags.map((tag) => (
-                    <Badge
-                      key={tag}
-                      variant="secondary"
-                      className="text-xs font-mono"
-                    >
+                    <Badge key={tag} variant="secondary" className="text-xs font-mono rounded-full">
                       {tag}
                     </Badge>
                   ))}
@@ -210,7 +205,7 @@ export default function ServicesPage() {
           ))}
         </div>
 
-        <Separator className="mb-24" />
+        <div className="border-t border-gray-100 mb-24" />
 
         {/* Process */}
         <ScrollFadeIn>
@@ -218,20 +213,20 @@ export default function ServicesPage() {
             <p className="text-sm font-mono text-primary mb-2 tracking-widest uppercase">
               How I Work
             </p>
-            <h2 className="font-heading text-3xl sm:text-4xl font-semibold">
+            <h2 className="font-heading text-3xl sm:text-4xl font-bold text-foreground">
               My Process
             </h2>
           </div>
         </ScrollFadeIn>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-24">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-24">
           {process.map((step, idx) => (
             <ScrollFadeIn key={step.step} delay={idx * 0.08}>
-              <div className="p-6 rounded-xl border border-border bg-card h-full">
-                <div className="font-mono text-4xl font-semibold text-primary/20 mb-4">
+              <div className="p-6 rounded-2xl border border-gray-100 bg-white shadow-sm h-full">
+                <div className="font-mono text-4xl font-bold text-primary/20 mb-4">
                   {step.step}
                 </div>
-                <h3 className="font-heading font-semibold mb-2">
+                <h3 className="font-heading font-semibold mb-2 text-foreground">
                   {step.title}
                 </h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
@@ -244,26 +239,25 @@ export default function ServicesPage() {
 
         {/* CTA */}
         <ScrollFadeIn>
-          <div className="relative rounded-2xl border border-border bg-card overflow-hidden p-10 sm:p-14 text-center">
+          <div className="relative rounded-3xl bg-foreground overflow-hidden px-10 py-14 sm:px-16 sm:py-16 text-center">
             <div
               className="absolute inset-0 pointer-events-none"
               style={{
-                background:
-                  "radial-gradient(ellipse at center, oklch(0.62 0.19 30 / 0.07) 0%, transparent 65%)",
+                background: "radial-gradient(ellipse at 30% 50%, oklch(0.62 0.19 30 / 0.25) 0%, transparent 65%)",
               }}
             />
             <div className="relative">
-              <h2 className="font-heading text-3xl font-semibold mb-3">
+              <h2 className="font-heading text-3xl font-bold text-background mb-3">
                 Ready to start your project?
               </h2>
-              <p className="text-muted-foreground mb-7 max-w-md mx-auto">
+              <p className="text-background/60 mb-8 max-w-md mx-auto">
                 Let&apos;s talk about what you&apos;re building. I&apos;m
                 available for new projects — reach out and I&apos;ll get back
                 to you within 24 hours.
               </p>
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-lg bg-primary text-primary-foreground font-medium hover:opacity-90 transition-opacity cursor-pointer glow-blue"
+                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-primary text-white font-semibold hover:opacity-90 transition-opacity cursor-pointer shadow-sm"
               >
                 Get In Touch
                 <ArrowRight className="w-4 h-4" />
