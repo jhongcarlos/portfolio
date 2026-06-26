@@ -116,6 +116,7 @@ export const projects: Project[] = [
   {
     slug: "usa-notary-platform",
     title: "USA Notary Platform",
+    url: "https://www.usanotary.net/",
     category: ["web-app"],
     stack: ["PHP", "Laravel", "JavaScript", "MySQL", "AWS", "Cloudflare"],
     client: "Online notary service · Virginia, USA",

@@ -21,6 +21,7 @@ export const experiences: Experience[] = [
   },
   {
     company: "USA Notary",
+    url: "https://www.usanotary.net/",
     role: "Web App Developer",
     period: "May 2023 – Dec 2024",
     summary:
@@ -39,6 +40,7 @@ export const experiences: Experience[] = [
   },
   {
     company: "Digital Radar Marketing",
+    url: "https://www.digitalradar.agency/",
     role: "WordPress Expert",
     period: "Oct 2021 – Jul 2023",
     summary:
@@ -48,6 +50,7 @@ export const experiences: Experience[] = [
   },
   {
     company: "Metro Pacific Investments Corporation",
+    url: "https://www.mpic.com.ph/",
     role: "Senior Assistant Developer",
     period: "Oct 2019 – Apr 2023",
     summary:
