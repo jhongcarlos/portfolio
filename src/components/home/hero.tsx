@@ -83,8 +83,8 @@ export default function Hero() {
           <span className="block text-[clamp(2.8rem,7vw,5rem)] text-foreground">
             Full-Stack Web Developer
           </span>
-          <span className="block text-[clamp(2.8rem,7vw,5rem)] gradient-text">
-            for agencies that ship.
+          <span className="block text-[clamp(2rem,5vw,4rem)] gradient-text">
+            who keeps up with your pace.
           </span>
         </motion.h1>
 
