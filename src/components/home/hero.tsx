@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { ArrowRight, Download, MapPin, Star, Zap, Globe, Layers } from "lucide-react";
+import { ArrowRight, Download, MapPin, Star } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { PastelMeshBackground } from "@/components/animated-background";
 
@@ -159,59 +159,75 @@ export default function Hero() {
             transition={{ duration: 0.7, delay: 0.4, ease }}
             className="hidden lg:block"
           >
-            <div className="relative w-full max-w-[480px] mx-auto">
+            <div className="relative w-full max-w-[440px] mx-auto">
 
-              {/* Main project showcase card */}
-              <div className="relative rounded-2xl border border-border bg-card shadow-[0_8px_48px_-12px_rgba(0,0,0,0.14)] overflow-hidden">
+              {/* Main profile card */}
+              <div className="relative rounded-2xl border border-border bg-card shadow-[0_12px_60px_-12px_rgba(0,0,0,0.25)] overflow-hidden">
 
-                {/* Browser chrome */}
-                <div className="flex items-center gap-1.5 px-4 py-3 border-b border-border bg-secondary/50">
-                  <div className="w-2.5 h-2.5 rounded-full bg-red-400/80" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-yellow-400/80" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-green-400/80" />
-                  <div className="ml-3 flex-1 bg-background rounded-md px-3 py-1 text-[11px] text-muted-foreground border border-border font-mono truncate">
-                    johnharoldcarlos.dev
+                {/* Card header with gradient */}
+                <div className="relative h-28 bg-gradient-to-br from-primary/20 via-primary/10 to-transparent overflow-hidden">
+                  <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at 80% 50%, oklch(0.55 0.24 30 / 0.18) 0%, transparent 70%)" }} />
+                  {/* Subtle grid lines */}
+                  <svg className="absolute inset-0 w-full h-full opacity-[0.07]" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                      <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+                        <path d="M 24 0 L 0 0 0 24" fill="none" stroke="currentColor" strokeWidth="0.5"/>
+                      </pattern>
+                    </defs>
+                    <rect width="100%" height="100%" fill="url(#grid)" className="text-foreground"/>
+                  </svg>
+                  {/* Status pill top-right */}
+                  <div className="absolute top-4 right-4 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-card/80 backdrop-blur-sm border border-border text-[10px] font-medium text-foreground">
+                    <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+                    Available
                   </div>
                 </div>
 
-                {/* Mock website UI */}
-                <div className="bg-card p-5 space-y-3">
-                  {/* Nav */}
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="h-3 w-20 rounded-full bg-foreground" />
-                    <div className="flex gap-2">
-                      <div className="h-2.5 w-10 rounded-full bg-border" />
-                      <div className="h-2.5 w-10 rounded-full bg-border" />
-                      <div className="h-2.5 w-14 rounded-full bg-primary" />
-                    </div>
+                {/* Avatar overlapping header */}
+                <div className="px-5 pb-5 -mt-8">
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-orange-400 to-rose-500 flex items-center justify-center text-white font-bold text-xl shadow-lg border-4 border-card mb-4">
+                    JHC
                   </div>
 
-                  {/* Hero block */}
-                  <div className="rounded-xl p-5 bg-primary/5 border border-primary/10">
-                    <div className="h-3 w-32 rounded-full bg-primary/70 mb-2" />
-                    <div className="h-2 w-48 rounded-full bg-muted-foreground/30 mb-1" />
-                    <div className="h-2 w-36 rounded-full bg-muted-foreground/20 mb-4" />
-                    <div className="flex gap-2">
-                      <div className="h-7 w-20 rounded-full bg-foreground" />
-                      <div className="h-7 w-20 rounded-full border border-border" />
-                    </div>
+                  <div className="mb-4">
+                    <h3 className="font-heading font-bold text-foreground text-base">John Harold Carlos</h3>
+                    <p className="text-xs text-muted-foreground mt-0.5">Full-Stack Developer · Manila, PH</p>
                   </div>
 
-                  {/* Cards row */}
-                  <div className="grid grid-cols-3 gap-2">
+                  {/* Stats row */}
+                  <div className="grid grid-cols-3 gap-2 mb-4">
                     {[
-                      { icon: Globe, color: "bg-sky-100 text-sky-600 dark:bg-sky-900/40 dark:text-sky-400", w: "w-14" },
-                      { icon: Layers, color: "bg-violet-100 text-violet-600 dark:bg-violet-900/40 dark:text-violet-400", w: "w-10" },
-                      { icon: Zap, color: "bg-amber-100 text-amber-600 dark:bg-amber-900/40 dark:text-amber-400", w: "w-12" },
-                    ].map(({ icon: Icon, color, w }, i) => (
-                      <div key={i} className="rounded-lg border border-border p-3 bg-secondary/40">
-                        <div className={`w-6 h-6 rounded-md ${color} flex items-center justify-center mb-2`}>
-                          <Icon className="w-3.5 h-3.5" />
-                        </div>
-                        <div className={`h-2 ${w} rounded-full bg-muted-foreground/30 mb-1`} />
-                        <div className="h-1.5 w-8 rounded-full bg-muted-foreground/20" />
+                      { value: "8+",   label: "Years Exp" },
+                      { value: "60+",  label: "Clients" },
+                      { value: "100+", label: "Projects" },
+                    ].map((s) => (
+                      <div key={s.label} className="rounded-xl bg-secondary/50 border border-border p-3 text-center">
+                        <div className="font-heading font-bold text-base gradient-text">{s.value}</div>
+                        <div className="text-[10px] text-muted-foreground mt-0.5">{s.label}</div>
                       </div>
                     ))}
+                  </div>
+
+                  {/* Tech stack pills */}
+                  <div className="mb-1">
+                    <p className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest mb-2">Tech Stack</p>
+                    <div className="flex flex-wrap gap-1.5">
+                      {["WordPress", "React", "Next.js", "PHP", "Laravel", "AWS"].map((tech) => (
+                        <span key={tech} className="px-2 py-0.5 rounded-full border border-border bg-secondary/40 text-[10px] font-mono text-muted-foreground">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Card footer */}
+                <div className="px-5 py-3 border-t border-border bg-secondary/20 flex items-center justify-between">
+                  <span className="text-[10px] text-muted-foreground font-mono">Open to freelance &amp; full-time</span>
+                  <div className="flex gap-1">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary/60" />
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary/40" />
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary/20" />
                   </div>
                 </div>
               </div>
@@ -221,7 +237,7 @@ export default function Hero() {
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 1.0, duration: 0.5, ease }}
-                className="absolute -right-8 top-6 bg-card rounded-xl shadow-[0_4px_24px_-6px_rgba(0,0,0,0.12)] border border-border p-3.5 w-52"
+                className="absolute -right-10 top-8 bg-card rounded-xl shadow-[0_4px_24px_-6px_rgba(0,0,0,0.2)] border border-border p-3.5 w-52"
               >
                 <div className="flex gap-0.5 mb-1.5">
                   {[...Array(5)].map((_, i) => (
@@ -234,37 +250,19 @@ export default function Hero() {
                 <p className="text-[11px] text-muted-foreground">— Alex W., Underdog Digital</p>
               </motion.div>
 
-              {/* Floating card: Experience badge */}
+              {/* Floating card: Latest project */}
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 1.2, duration: 0.5, ease }}
-                className="absolute -left-8 bottom-10 bg-card rounded-xl shadow-[0_4px_24px_-6px_rgba(0,0,0,0.12)] border border-border p-3.5"
+                className="absolute -left-10 bottom-16 bg-card rounded-xl shadow-[0_4px_24px_-6px_rgba(0,0,0,0.2)] border border-border p-3.5 w-48"
               >
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-orange-400 to-rose-500 flex items-center justify-center text-white font-bold text-sm shadow-sm">
-                    8+
-                  </div>
-                  <div>
-                    <div className="text-xs font-semibold text-foreground">Years of</div>
-                    <div className="text-xs text-muted-foreground">Experience</div>
-                  </div>
+                <p className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest mb-2">Latest Project</p>
+                <p className="text-xs font-semibold text-foreground mb-1">USA Notary Platform</p>
+                <div className="flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-green-400" />
+                  <span className="text-[10px] text-muted-foreground">Live · PHP / Laravel / AWS</span>
                 </div>
-              </motion.div>
-
-              {/* Open to work badge */}
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.5, duration: 0.4, ease }}
-                className="absolute -bottom-5 left-1/2 -translate-x-1/2 flex items-center gap-2 px-4 py-2.5 rounded-full border border-border bg-card shadow-lg text-xs font-medium text-foreground whitespace-nowrap"
-              >
-                <motion.span
-                  className="w-2 h-2 rounded-full bg-green-400"
-                  animate={{ opacity: [1, 0.3, 1] }}
-                  transition={{ duration: 1.4, repeat: Infinity }}
-                />
-                Open to work · Manila, PH
               </motion.div>
 
             </div>
