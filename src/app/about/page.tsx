@@ -22,7 +22,7 @@ const colorMap: Record<string, string> = {
 
 export default function AboutPage() {
   return (
-    <div className="pt-16 bg-white">
+    <div className="pt-16 bg-background">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
 
         {/* Bio section */}
@@ -76,7 +76,7 @@ export default function AboutPage() {
 
             {/* Stats + availability */}
             <div className="flex flex-col gap-4">
-              <div className="p-6 rounded-2xl border border-gray-100 bg-white shadow-sm">
+              <div className="p-6 rounded-2xl border border-border bg-card shadow-sm">
                 <div className="grid grid-cols-2 gap-6">
                   {[
                     { value: "8+",    label: "Years of Experience" },
@@ -94,7 +94,7 @@ export default function AboutPage() {
                 </div>
               </div>
 
-              <div className="p-6 rounded-2xl border border-gray-100 bg-white shadow-sm">
+              <div className="p-6 rounded-2xl border border-border bg-card shadow-sm">
                 <h3 className="text-xs font-mono text-muted-foreground uppercase tracking-widest mb-3">
                   Currently Available For
                 </h3>
@@ -117,7 +117,7 @@ export default function AboutPage() {
                 href="/John_Harold_Carlos_Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-gray-200 bg-white text-foreground font-semibold text-sm hover:bg-gray-50 transition-colors cursor-pointer shadow-sm"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-border bg-card text-foreground font-semibold text-sm hover:bg-secondary transition-colors cursor-pointer shadow-sm"
               >
                 <Download className="w-4 h-4" />
                 Download Resume (PDF)
@@ -137,7 +137,7 @@ export default function AboutPage() {
               {skillCategories.map((cat) => (
                 <div
                   key={cat.category}
-                  className="p-5 rounded-2xl border border-gray-100 bg-white shadow-sm"
+                  className="p-5 rounded-2xl border border-border bg-card shadow-sm"
                 >
                   <h3 className="text-xs font-mono text-muted-foreground uppercase tracking-widest mb-3">
                     {cat.category}
@@ -159,7 +159,7 @@ export default function AboutPage() {
           </div>
         </ScrollFadeIn>
 
-        <div className="border-t border-gray-100 mb-20" />
+        <div className="border-t border-border mb-20" />
 
         {/* Experience timeline */}
         <ScrollFadeIn>
@@ -176,11 +176,11 @@ export default function AboutPage() {
             {experiences.map((item, idx) => (
               <ScrollFadeIn key={item.company + item.period} delay={idx * 0.06}>
                 <div className="sm:pl-12 relative">
-                  <div className="absolute left-2 top-4 w-5 h-5 rounded-full border-2 border-primary bg-white hidden sm:flex items-center justify-center shadow-sm">
+                  <div className="absolute left-2 top-4 w-5 h-5 rounded-full border-2 border-primary bg-card hidden sm:flex items-center justify-center shadow-sm">
                     <Briefcase className="w-2.5 h-2.5 text-primary" />
                   </div>
 
-                  <div className="p-5 rounded-2xl border border-gray-100 bg-white shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
+                  <div className="p-5 rounded-2xl border border-border bg-card shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
                     <div className="flex flex-wrap items-start justify-between gap-2 mb-1">
                       <div>
                         <h3 className="font-heading font-semibold text-foreground">
@@ -224,10 +224,10 @@ export default function AboutPage() {
             Academic Background
           </h2>
           <div className="sm:pl-12 relative">
-            <div className="absolute left-2 top-4 w-5 h-5 rounded-full border-2 border-primary/50 bg-white hidden sm:flex items-center justify-center shadow-sm">
+            <div className="absolute left-2 top-4 w-5 h-5 rounded-full border-2 border-primary/50 bg-card hidden sm:flex items-center justify-center shadow-sm">
               <GraduationCap className="w-2.5 h-2.5 text-primary/60" />
             </div>
-            <div className="p-5 rounded-2xl border border-gray-100 bg-white shadow-sm">
+            <div className="p-5 rounded-2xl border border-border bg-card shadow-sm">
               <div className="flex flex-wrap items-start justify-between gap-2">
                 <div>
                   <h3 className="font-heading font-semibold text-foreground">{education.degree}</h3>

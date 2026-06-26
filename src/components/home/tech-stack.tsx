@@ -26,7 +26,7 @@ export default function TechStack() {
           {logos.map((name, i) => (
             <div
               key={`${name}-${i}`}
-              className="flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-white shadow-sm text-sm font-medium text-muted-foreground hover:text-foreground hover:border-primary/30 hover:shadow-md transition-all whitespace-nowrap cursor-default select-none"
+              className="flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-card shadow-sm text-sm font-medium text-muted-foreground hover:text-foreground hover:border-primary/30 hover:shadow-md transition-all whitespace-nowrap cursor-default select-none"
             >
               <span className="font-mono text-primary text-xs">▸</span>
               {name}

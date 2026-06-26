@@ -12,7 +12,6 @@ const rotatingTitles = [
   "WordPress Expert",
   "React Developer",
   "Agency Partner",
-  "Full-Stack Developer",
 ];
 
 const AVATARS = [
@@ -139,7 +138,7 @@ export default function Hero() {
                   {AVATARS.map((a) => (
                     <div
                       key={a.initials}
-                      className={`w-8 h-8 rounded-full ${a.bg} border-2 border-white flex items-center justify-center text-[10px] font-bold text-white shadow-sm`}
+                      className={`w-8 h-8 rounded-full ${a.bg} border-2 border-background flex items-center justify-center text-[10px] font-bold text-white shadow-sm`}
                     >
                       {a.initials}
                     </div>
@@ -163,54 +162,54 @@ export default function Hero() {
             <div className="relative w-full max-w-[480px] mx-auto">
 
               {/* Main project showcase card */}
-              <div className="relative rounded-2xl border border-gray-200 bg-white shadow-[0_8px_48px_-12px_rgba(0,0,0,0.14)] overflow-hidden">
+              <div className="relative rounded-2xl border border-border bg-card shadow-[0_8px_48px_-12px_rgba(0,0,0,0.14)] overflow-hidden">
 
                 {/* Browser chrome */}
-                <div className="flex items-center gap-1.5 px-4 py-3 border-b border-gray-100 bg-gray-50">
+                <div className="flex items-center gap-1.5 px-4 py-3 border-b border-border bg-secondary/50">
                   <div className="w-2.5 h-2.5 rounded-full bg-red-400/80" />
                   <div className="w-2.5 h-2.5 rounded-full bg-yellow-400/80" />
                   <div className="w-2.5 h-2.5 rounded-full bg-green-400/80" />
-                  <div className="ml-3 flex-1 bg-white rounded-md px-3 py-1 text-[11px] text-gray-400 border border-gray-200 font-mono truncate">
+                  <div className="ml-3 flex-1 bg-background rounded-md px-3 py-1 text-[11px] text-muted-foreground border border-border font-mono truncate">
                     ourrelationship.app
                   </div>
                 </div>
 
                 {/* Mock website UI */}
-                <div className="bg-white p-5 space-y-3">
+                <div className="bg-card p-5 space-y-3">
                   {/* Nav */}
                   <div className="flex items-center justify-between mb-4">
-                    <div className="h-3 w-20 rounded-full bg-gray-900" />
+                    <div className="h-3 w-20 rounded-full bg-foreground" />
                     <div className="flex gap-2">
-                      <div className="h-2.5 w-10 rounded-full bg-gray-200" />
-                      <div className="h-2.5 w-10 rounded-full bg-gray-200" />
+                      <div className="h-2.5 w-10 rounded-full bg-border" />
+                      <div className="h-2.5 w-10 rounded-full bg-border" />
                       <div className="h-2.5 w-14 rounded-full bg-primary" />
                     </div>
                   </div>
 
                   {/* Hero block */}
-                  <div className="rounded-xl p-5 bg-gradient-to-br from-orange-50 to-rose-50 border border-orange-100/60">
+                  <div className="rounded-xl p-5 bg-primary/5 border border-primary/10">
                     <div className="h-3 w-32 rounded-full bg-primary/70 mb-2" />
-                    <div className="h-2 w-48 rounded-full bg-gray-300 mb-1" />
-                    <div className="h-2 w-36 rounded-full bg-gray-200 mb-4" />
+                    <div className="h-2 w-48 rounded-full bg-muted-foreground/30 mb-1" />
+                    <div className="h-2 w-36 rounded-full bg-muted-foreground/20 mb-4" />
                     <div className="flex gap-2">
-                      <div className="h-7 w-20 rounded-full bg-gray-900" />
-                      <div className="h-7 w-20 rounded-full border border-gray-300" />
+                      <div className="h-7 w-20 rounded-full bg-foreground" />
+                      <div className="h-7 w-20 rounded-full border border-border" />
                     </div>
                   </div>
 
                   {/* Cards row */}
                   <div className="grid grid-cols-3 gap-2">
                     {[
-                      { icon: Globe, color: "bg-sky-100 text-sky-600", w: "w-14" },
-                      { icon: Layers, color: "bg-violet-100 text-violet-600", w: "w-10" },
-                      { icon: Zap, color: "bg-amber-100 text-amber-600", w: "w-12" },
+                      { icon: Globe, color: "bg-sky-100 text-sky-600 dark:bg-sky-900/40 dark:text-sky-400", w: "w-14" },
+                      { icon: Layers, color: "bg-violet-100 text-violet-600 dark:bg-violet-900/40 dark:text-violet-400", w: "w-10" },
+                      { icon: Zap, color: "bg-amber-100 text-amber-600 dark:bg-amber-900/40 dark:text-amber-400", w: "w-12" },
                     ].map(({ icon: Icon, color, w }, i) => (
-                      <div key={i} className="rounded-lg border border-gray-100 p-3 bg-gray-50">
+                      <div key={i} className="rounded-lg border border-border p-3 bg-secondary/40">
                         <div className={`w-6 h-6 rounded-md ${color} flex items-center justify-center mb-2`}>
                           <Icon className="w-3.5 h-3.5" />
                         </div>
-                        <div className={`h-2 ${w} rounded-full bg-gray-300 mb-1`} />
-                        <div className="h-1.5 w-8 rounded-full bg-gray-200" />
+                        <div className={`h-2 ${w} rounded-full bg-muted-foreground/30 mb-1`} />
+                        <div className="h-1.5 w-8 rounded-full bg-muted-foreground/20" />
                       </div>
                     ))}
                   </div>
@@ -222,17 +221,17 @@ export default function Hero() {
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 1.0, duration: 0.5, ease }}
-                className="absolute -right-8 top-6 bg-white rounded-xl shadow-[0_4px_24px_-6px_rgba(0,0,0,0.12)] border border-gray-100 p-3.5 w-52"
+                className="absolute -right-8 top-6 bg-card rounded-xl shadow-[0_4px_24px_-6px_rgba(0,0,0,0.12)] border border-border p-3.5 w-52"
               >
                 <div className="flex gap-0.5 mb-1.5">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
                   ))}
                 </div>
-                <p className="text-xs font-semibold text-gray-900 leading-snug mb-1">
+                <p className="text-xs font-semibold text-foreground leading-snug mb-1">
                   &ldquo;Best execution I&apos;ve seen.&rdquo;
                 </p>
-                <p className="text-[11px] text-gray-400">— Alex W., Underdog Digital</p>
+                <p className="text-[11px] text-muted-foreground">— Alex W., Underdog Digital</p>
               </motion.div>
 
               {/* Floating card: Experience badge */}
@@ -240,15 +239,15 @@ export default function Hero() {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 1.2, duration: 0.5, ease }}
-                className="absolute -left-8 bottom-10 bg-white rounded-xl shadow-[0_4px_24px_-6px_rgba(0,0,0,0.12)] border border-gray-100 p-3.5"
+                className="absolute -left-8 bottom-10 bg-card rounded-xl shadow-[0_4px_24px_-6px_rgba(0,0,0,0.12)] border border-border p-3.5"
               >
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full bg-gradient-to-br from-orange-400 to-rose-500 flex items-center justify-center text-white font-bold text-sm shadow-sm">
                     8+
                   </div>
                   <div>
-                    <div className="text-xs font-semibold text-gray-900">Years of</div>
-                    <div className="text-xs text-gray-400">Experience</div>
+                    <div className="text-xs font-semibold text-foreground">Years of</div>
+                    <div className="text-xs text-muted-foreground">Experience</div>
                   </div>
                 </div>
               </motion.div>
@@ -258,7 +257,7 @@ export default function Hero() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.5, duration: 0.4, ease }}
-                className="absolute -bottom-5 left-1/2 -translate-x-1/2 flex items-center gap-2 px-4 py-2.5 rounded-full border border-gray-200 bg-white shadow-lg text-xs font-medium text-gray-700 whitespace-nowrap"
+                className="absolute -bottom-5 left-1/2 -translate-x-1/2 flex items-center gap-2 px-4 py-2.5 rounded-full border border-border bg-card shadow-lg text-xs font-medium text-foreground whitespace-nowrap"
               >
                 <motion.span
                   className="w-2 h-2 rounded-full bg-green-400"
@@ -278,7 +277,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.75, duration: 0.5, ease }}
-          className="mt-24 pt-8 border-t border-gray-200 grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-xl"
+          className="mt-24 pt-8 border-t border-border grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-xl"
         >
           {[
             { value: "8+",   label: "Years" },

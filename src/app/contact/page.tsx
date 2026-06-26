@@ -45,7 +45,7 @@ const socialLinks = [
 
 export default function ContactPage() {
   return (
-    <div className="pt-16 bg-white">
+    <div className="pt-16 bg-background">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
 
         {/* Header */}
@@ -76,7 +76,7 @@ export default function ContactPage() {
           {/* Sidebar */}
           <div className="lg:col-span-2 space-y-4">
             <ScrollFadeIn delay={0.1}>
-              <div className="p-6 rounded-2xl border border-gray-100 bg-white shadow-sm space-y-5">
+              <div className="p-6 rounded-2xl border border-border bg-card shadow-sm space-y-5">
                 <h2 className="text-xs font-mono text-muted-foreground uppercase tracking-widest">
                   Contact Details
                 </h2>
@@ -106,7 +106,7 @@ export default function ContactPage() {
             </ScrollFadeIn>
 
             <ScrollFadeIn delay={0.15}>
-              <div className="p-6 rounded-2xl border border-gray-100 bg-white shadow-sm">
+              <div className="p-6 rounded-2xl border border-border bg-card shadow-sm">
                 <h2 className="text-xs font-mono text-muted-foreground uppercase tracking-widest mb-4">
                   Find Me Online
                 </h2>
@@ -135,7 +135,7 @@ export default function ContactPage() {
             </ScrollFadeIn>
 
             <ScrollFadeIn delay={0.2}>
-              <div className="p-5 rounded-2xl border border-green-100 bg-green-50/50">
+              <div className="p-5 rounded-2xl border border-border bg-card">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
                   <span className="text-sm font-semibold text-foreground">Currently Available</span>

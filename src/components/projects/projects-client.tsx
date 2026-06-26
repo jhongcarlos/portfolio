@@ -22,9 +22,9 @@ export default function ProjectsClient() {
             transition={{ duration: 0.3, delay: idx * 0.04 }}
           >
             {project.isConfidential ? (
-              <article className="flex flex-col p-6 rounded-2xl border border-gray-100 bg-white shadow-sm h-full opacity-90">
+              <article className="flex flex-col p-6 rounded-2xl border border-border bg-card shadow-sm h-full opacity-90">
                 <div className="flex items-center justify-between mb-3">
-                  <span className="inline-flex items-center gap-1 text-xs text-muted-foreground border border-gray-200 rounded-full px-2.5 py-1 bg-gray-50">
+                  <span className="inline-flex items-center gap-1 text-xs text-muted-foreground border border-gray-200 rounded-full px-2.5 py-1 bg-secondary/50">
                     <Lock className="w-2.5 h-2.5" />
                     Confidential
                   </span>
@@ -34,7 +34,7 @@ export default function ProjectsClient() {
                 <p className="text-sm text-muted-foreground leading-relaxed flex-1 mb-4">
                   {project.description}
                 </p>
-                <div className="pt-3 border-t border-gray-100 mb-4">
+                <div className="pt-3 border-t border-border mb-4">
                   <p className="text-xs text-muted-foreground italic">↳ {project.highlight}</p>
                 </div>
                 <div className="flex flex-wrap gap-1.5">
@@ -46,7 +46,7 @@ export default function ProjectsClient() {
                 </div>
               </article>
             ) : (
-              <article className="group flex flex-col p-6 rounded-2xl border border-gray-100 bg-white shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 h-full">
+              <article className="group flex flex-col p-6 rounded-2xl border border-border bg-card shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 h-full">
                 <div className="flex items-center justify-between mb-3">
                   <div
                     className="w-8 h-8 rounded-lg opacity-20"
@@ -71,7 +71,7 @@ export default function ProjectsClient() {
                 <p className="text-sm text-muted-foreground leading-relaxed flex-1 mb-3">
                   {project.description}
                 </p>
-                <div className="pt-3 border-t border-gray-100 mb-4">
+                <div className="pt-3 border-t border-border mb-4">
                   <p className="text-xs text-muted-foreground italic">↳ {project.highlight}</p>
                 </div>
                 <div className="flex flex-wrap gap-1.5">

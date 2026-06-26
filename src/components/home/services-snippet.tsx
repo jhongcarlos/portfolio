@@ -30,7 +30,7 @@ const services = [
 
 export default function ServicesSnippet() {
   return (
-    <section className="py-20 sm:py-24 bg-gray-50/60">
+    <section className="py-20 sm:py-24 bg-secondary/30">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <StaggerContainer viewport staggerDelay={0.07} initialDelay={0}>
           <StaggerItem>
@@ -56,7 +56,7 @@ export default function ServicesSnippet() {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
             {services.map((service) => (
               <StaggerItem key={service.title}>
-                <div className="group p-6 rounded-2xl border border-gray-100 bg-white shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 h-full">
+                <div className="group p-6 rounded-2xl border border-border bg-card shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 h-full">
                   <div className={`w-11 h-11 rounded-xl ${service.iconBg} flex items-center justify-center mb-4`}>
                     <service.icon className="w-5 h-5" />
                   </div>

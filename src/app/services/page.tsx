@@ -144,7 +144,7 @@ const process = [
 
 export default function ServicesPage() {
   return (
-    <div className="pt-16 bg-white">
+    <div className="pt-16 bg-background">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
 
         {/* Header */}
@@ -167,7 +167,7 @@ export default function ServicesPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-24">
           {services.map((service, idx) => (
             <ScrollFadeIn key={service.title} delay={idx * 0.07}>
-              <div className="flex flex-col p-7 rounded-2xl border border-gray-100 bg-white shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 h-full">
+              <div className="flex flex-col p-7 rounded-2xl border border-border bg-card shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 h-full">
                 <div className={`w-11 h-11 rounded-xl ${iconColors[service.title]} flex items-center justify-center mb-5`}>
                   <service.icon className="w-5 h-5" />
                 </div>
@@ -205,7 +205,7 @@ export default function ServicesPage() {
           ))}
         </div>
 
-        <div className="border-t border-gray-100 mb-24" />
+        <div className="border-t border-border mb-24" />
 
         {/* Process */}
         <ScrollFadeIn>
@@ -222,7 +222,7 @@ export default function ServicesPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-24">
           {process.map((step, idx) => (
             <ScrollFadeIn key={step.step} delay={idx * 0.08}>
-              <div className="p-6 rounded-2xl border border-gray-100 bg-white shadow-sm h-full">
+              <div className="p-6 rounded-2xl border border-border bg-card shadow-sm h-full">
                 <div className="font-mono text-4xl font-bold text-primary/20 mb-4">
                   {step.step}
                 </div>

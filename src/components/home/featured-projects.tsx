@@ -34,7 +34,7 @@ export default function FeaturedProjects() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {featuredProjects.map((project) => (
               <StaggerItem key={project.slug}>
-                <article className="group relative flex flex-col p-6 rounded-2xl border border-gray-100 bg-white shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 h-full">
+                <article className="group relative flex flex-col p-6 rounded-2xl border border-border bg-card shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 h-full">
                   <div className="flex items-center justify-between mb-4">
                     <div
                       className="w-8 h-8 rounded-lg"

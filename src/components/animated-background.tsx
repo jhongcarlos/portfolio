@@ -29,7 +29,7 @@ const PARTICLES = [
 export function PastelMeshBackground() {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden>
-      <div className="absolute inset-0 bg-white" />
+      <div className="absolute inset-0 bg-background" />
 
       {/* Blob 1 — soft sage green, top-left */}
       <div
