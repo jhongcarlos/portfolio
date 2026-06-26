@@ -78,7 +78,18 @@ export default function Navbar() {
         <div className="flex items-center gap-2">
           {mounted && (
             <button
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              onClick={() => {
+                const next = theme === "dark" ? "light" : "dark";
+                if (!document.startViewTransition) {
+                  setTheme(next);
+                  return;
+                }
+                document.documentElement.dataset.themeTransition = next;
+                const transition = document.startViewTransition(() => setTheme(next));
+                transition.finished.finally(() => {
+                  delete document.documentElement.dataset.themeTransition;
+                });
+              }}
               className="p-2 rounded-full text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors duration-200 cursor-pointer"
               aria-label="Toggle theme"
             >

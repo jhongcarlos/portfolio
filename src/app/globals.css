@@ -10,6 +10,33 @@
   .text-balance { text-wrap: balance; }
 }
 
+/* ── Theme transition ── */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+/* Light mode: bottom-left → top-right */
+[data-theme-transition="light"]::view-transition-new(root) {
+  animation: theme-reveal-light 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Dark mode: top-right → bottom-left */
+[data-theme-transition="dark"]::view-transition-new(root) {
+  animation: theme-reveal-dark 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes theme-reveal-light {
+  from { clip-path: circle(0% at 0% 100%); }
+  to   { clip-path: circle(150% at 100% 0%); }
+}
+
+@keyframes theme-reveal-dark {
+  from { clip-path: circle(0% at 100% 0%); }
+  to   { clip-path: circle(150% at 0% 100%); }
+}
+
 @layer base {
   :root {
     /* ── Light mode — clean white SaaS ── */
