@@ -115,7 +115,7 @@ export default function Hero() {
                 </Link>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-border bg-white/70 backdrop-blur-sm text-foreground font-semibold text-sm hover:bg-secondary transition-colors shadow-sm cursor-pointer"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-border bg-card text-foreground font-semibold text-sm hover:bg-secondary transition-colors shadow-sm cursor-pointer"
                 >
                   Get In Touch
                 </Link>
@@ -170,7 +170,7 @@ export default function Hero() {
                   <div className="w-2.5 h-2.5 rounded-full bg-yellow-400/80" />
                   <div className="w-2.5 h-2.5 rounded-full bg-green-400/80" />
                   <div className="ml-3 flex-1 bg-background rounded-md px-3 py-1 text-[11px] text-muted-foreground border border-border font-mono truncate">
-                    ourrelationship.app
+                    johnharoldcarlos.dev
                   </div>
                 </div>
 
