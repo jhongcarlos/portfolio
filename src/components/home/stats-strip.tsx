@@ -56,7 +56,7 @@ export default function StatsStrip() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 80% 60% at 50% 50%, oklch(0.65 0.22 264 / 0.06) 0%, transparent 70%)",
+            "radial-gradient(ellipse 80% 60% at 50% 50%, oklch(0.65 0.22 30 / 0.06) 0%, transparent 70%)",
         }}
       />
 

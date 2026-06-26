@@ -249,7 +249,7 @@ export default function ServicesPage() {
               className="absolute inset-0 pointer-events-none"
               style={{
                 background:
-                  "radial-gradient(ellipse at center, oklch(0.62 0.19 264 / 0.07) 0%, transparent 65%)",
+                  "radial-gradient(ellipse at center, oklch(0.62 0.19 30 / 0.07) 0%, transparent 65%)",
               }}
             />
             <div className="relative">

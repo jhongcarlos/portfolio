@@ -2,10 +2,11 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { ArrowRight, Download, MapPin, Circle, Sparkles } from "lucide-react";
+import { ArrowRight, Download, MapPin, Star, Zap, Globe, Layers } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MeshGradientBackground, FloatingParticles, Vignette } from "@/components/animated-background";
-import { StaggerContainer, StaggerItem } from "@/components/motion-wrapper";
+import { PastelMeshBackground } from "@/components/animated-background";
+
+const ease = [0.21, 0.47, 0.32, 0.98] as const;
 
 const rotatingTitles = [
   "WordPress Expert",
@@ -14,30 +15,23 @@ const rotatingTitles = [
   "Full-Stack Developer",
 ];
 
-const codeLines = [
-  { indent: 0, content: "const developer = {",         color: "text-blue-400" },
-  { indent: 1, content: "name: 'John Harold Carlos',", color: "text-emerald-400" },
-  { indent: 1, content: "exp: '8+ years',",            color: "text-yellow-300" },
-  { indent: 1, content: "stack: [",                    color: "text-blue-400" },
-  { indent: 2, content: "'Next.js', 'WordPress',",     color: "text-orange-300" },
-  { indent: 2, content: "'PHP', 'React', 'Laravel',",  color: "text-orange-300" },
-  { indent: 1, content: "],",                          color: "text-blue-400" },
-  { indent: 1, content: "location: 'Manila, PH 🇵🇭',", color: "text-emerald-400" },
-  { indent: 1, content: "available: true,",            color: "text-purple-400" },
-  { indent: 0, content: "};",                          color: "text-blue-400" },
+const AVATARS = [
+  { bg: "bg-orange-400", initials: "AC" },
+  { bg: "bg-sky-400",    initials: "BM" },
+  { bg: "bg-emerald-400",initials: "RD" },
+  { bg: "bg-violet-400", initials: "KL" },
 ];
 
-const techBadges = [
-  { label: "Next.js",   x: "6%",  y: "16%", delay: 1.0 },
-  { label: "WordPress", x: "68%", y: "6%",  delay: 1.2 },
-  { label: "Laravel",   x: "74%", y: "76%", delay: 1.4 },
-  { label: "AWS",       x: "2%",  y: "70%", delay: 1.6 },
-  { label: "React",     x: "50%", y: "88%", delay: 1.8 },
-];
+function fadeUp(delay: number) {
+  return {
+    initial: { opacity: 0, y: 22 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.55, delay, ease },
+  };
+}
 
 export default function Hero() {
   const [titleIndex, setTitleIndex] = useState(0);
-  const [visibleLines, setVisibleLines] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -46,84 +40,83 @@ export default function Hero() {
     return () => clearInterval(interval);
   }, []);
 
-  useEffect(() => {
-    if (visibleLines >= codeLines.length) return;
-    const t = setTimeout(() => setVisibleLines((v) => v + 1), 200);
-    return () => clearTimeout(t);
-  }, [visibleLines]);
-
   return (
     <section className="relative min-h-screen flex items-center pt-16 overflow-hidden">
-      <MeshGradientBackground />
-      <FloatingParticles />
-      <Vignette />
+      <PastelMeshBackground />
 
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-20 sm:py-28 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-10 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-10 items-center">
 
           {/* ── Left: Text ── */}
-          <StaggerContainer initialDelay={0.1}>
-            <StaggerItem>
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-primary/30 bg-primary/5 backdrop-blur-sm text-sm text-primary mb-8">
-                <Circle className="w-2 h-2 fill-green-400 text-green-400" />
-                <span>Available for freelance &amp; full-time</span>
-                <Sparkles className="w-3 h-3 text-primary/60" />
+          <div>
+            {/* Announcement pill */}
+            <motion.div {...fadeUp(0.1)}>
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-foreground text-background text-xs font-semibold mb-8 shadow-sm">
+                <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+                Available for Work
+                <span className="opacity-40 mx-0.5">·</span>
+                <span className="opacity-70 font-normal">Manila, PH</span>
+                <ArrowRight className="w-3 h-3 opacity-60" />
               </div>
-            </StaggerItem>
+            </motion.div>
 
-            <StaggerItem>
-              <h1 className="font-heading text-5xl sm:text-6xl lg:text-[4rem] font-semibold tracking-tight leading-[1.05] mb-4">
+            {/* Heading */}
+            <motion.div {...fadeUp(0.2)}>
+              <h1 className="font-heading text-5xl sm:text-6xl lg:text-[4rem] font-bold tracking-tight leading-[1.05] mb-4 text-foreground">
                 Full-Stack<br />
                 <span className="gradient-text">Web Developer</span>
               </h1>
-            </StaggerItem>
+            </motion.div>
 
-            <StaggerItem>
-              <div className="h-12 mb-6 overflow-hidden">
+            {/* Rotating subtitle */}
+            <motion.div {...fadeUp(0.3)}>
+              <div className="h-10 mb-5 overflow-hidden">
                 <AnimatePresence mode="wait">
                   <motion.p
                     key={rotatingTitles[titleIndex]}
-                    initial={{ y: 40, opacity: 0 }}
+                    initial={{ y: 32, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
-                    exit={{ y: -40, opacity: 0 }}
-                    transition={{ duration: 0.35, ease: [0.21, 0.47, 0.32, 0.98] }}
-                    className="font-heading text-2xl sm:text-3xl font-medium text-muted-foreground"
+                    exit={{ y: -32, opacity: 0 }}
+                    transition={{ duration: 0.3, ease }}
+                    className="font-heading text-xl sm:text-2xl font-medium text-muted-foreground"
                   >
                     &amp; {rotatingTitles[titleIndex]}
                   </motion.p>
                 </AnimatePresence>
               </div>
-            </StaggerItem>
+            </motion.div>
 
-            <StaggerItem>
-              <p className="text-lg text-muted-foreground leading-relaxed mb-3 max-w-lg">
+            {/* Description */}
+            <motion.div {...fadeUp(0.38)}>
+              <p className="text-base sm:text-lg text-muted-foreground leading-relaxed mb-3 max-w-lg">
                 8+ years building fast, scalable websites and web applications for
                 agencies and enterprise clients across the{" "}
                 <span className="text-foreground font-medium">US</span>,{" "}
                 <span className="text-foreground font-medium">Singapore</span>, and{" "}
                 <span className="text-foreground font-medium">Philippines</span>.
               </p>
-            </StaggerItem>
+            </motion.div>
 
-            <StaggerItem>
-              <div className="flex items-center gap-1.5 text-sm text-muted-foreground mb-10">
+            <motion.div {...fadeUp(0.44)}>
+              <div className="flex items-center gap-1.5 text-sm text-muted-foreground mb-8">
                 <MapPin className="w-3.5 h-3.5" />
                 <span>Manila, Philippines · Open to Remote</span>
               </div>
-            </StaggerItem>
+            </motion.div>
 
-            <StaggerItem>
-              <div className="flex flex-wrap gap-3 mb-14">
+            {/* CTAs */}
+            <motion.div {...fadeUp(0.5)}>
+              <div className="flex flex-wrap gap-3 mb-10">
                 <Link
                   href="/projects"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground font-medium hover:opacity-90 transition-opacity glow-blue"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-foreground text-background font-semibold text-sm hover:opacity-85 transition-opacity shadow-sm cursor-pointer"
                 >
                   View My Work
                   <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-border bg-card/60 backdrop-blur-sm text-foreground font-medium hover:bg-secondary transition-colors"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-border bg-white/70 backdrop-blur-sm text-foreground font-semibold text-sm hover:bg-secondary transition-colors shadow-sm cursor-pointer"
                 >
                   Get In Touch
                 </Link>
@@ -131,141 +124,141 @@ export default function Hero() {
                   href="/John_Harold_Carlos_Resume.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-3 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary/60 transition-colors"
+                  className="inline-flex items-center gap-2 px-5 py-3 rounded-full text-muted-foreground hover:text-foreground hover:bg-secondary/70 transition-colors text-sm cursor-pointer"
                 >
                   <Download className="w-4 h-4" />
                   Resume
                 </a>
               </div>
-            </StaggerItem>
+            </motion.div>
 
-            <StaggerItem>
-              <div className="grid grid-cols-4 gap-4 pt-8 border-t border-border/60 max-w-sm">
-                {[
-                  { value: "8+",    label: "Years" },
-                  { value: "60+",   label: "Clients" },
-                  { value: "100+",  label: "Projects" },
-                  { value: "7",     label: "Platforms" },
-                ].map((stat) => (
-                  <div key={stat.label}>
-                    <div className="font-heading text-xl sm:text-2xl font-semibold gradient-text">
-                      {stat.value}
+            {/* Social proof */}
+            <motion.div {...fadeUp(0.58)}>
+              <div className="flex items-center gap-4 pt-6 border-t border-border/60">
+                <div className="flex -space-x-2">
+                  {AVATARS.map((a) => (
+                    <div
+                      key={a.initials}
+                      className={`w-8 h-8 rounded-full ${a.bg} border-2 border-white flex items-center justify-center text-[10px] font-bold text-white shadow-sm`}
+                    >
+                      {a.initials}
                     </div>
-                    <div className="text-xs text-muted-foreground mt-0.5">{stat.label}</div>
-                  </div>
-                ))}
+                  ))}
+                </div>
+                <div>
+                  <span className="font-semibold text-foreground text-sm">60+ clients</span>
+                  <span className="text-muted-foreground text-sm"> worked with globally</span>
+                </div>
               </div>
-            </StaggerItem>
-          </StaggerContainer>
+            </motion.div>
+          </div>
 
-          {/* ── Right: Terminal + floating badges ── */}
+          {/* ── Right: Visual ── */}
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, delay: 0.5, ease: [0.21, 0.47, 0.32, 0.98] }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.4, ease }}
             className="hidden lg:block"
           >
-            <div className="relative w-full max-w-[460px] mx-auto">
+            <div className="relative w-full max-w-[480px] mx-auto">
 
-              {/* Ambient glow behind card */}
-              <div
-                className="absolute -inset-6 rounded-3xl opacity-50 blur-3xl pointer-events-none"
-                style={{
-                  background: "radial-gradient(ellipse at 50% 50%, oklch(0.65 0.22 264 / 0.2) 0%, oklch(0.68 0.20 200 / 0.1) 60%, transparent 100%)",
-                }}
-              />
+              {/* Main project showcase card */}
+              <div className="relative rounded-2xl border border-gray-200 bg-white shadow-[0_8px_48px_-12px_rgba(0,0,0,0.14)] overflow-hidden">
 
-              {/* Terminal window */}
-              <div className="relative rounded-xl border border-border bg-card/80 backdrop-blur-sm overflow-hidden"
-                style={{ boxShadow: "0 0 0 1px oklch(0.65 0.22 264 / 0.15), 0 32px 64px -16px oklch(0 0 0 / 0.5)" }}
-              >
-                {/* Window chrome */}
-                <div className="flex items-center gap-1.5 px-4 py-3 border-b border-border bg-background/50">
-                  <div className="w-3 h-3 rounded-full bg-red-500/70" />
-                  <div className="w-3 h-3 rounded-full bg-yellow-500/70" />
-                  <div className="w-3 h-3 rounded-full bg-green-500/70" />
-                  <span className="ml-3 text-xs font-mono text-muted-foreground">portfolio.ts</span>
-                  <div className="ml-auto flex items-center gap-1">
-                    <div className="w-1 h-1 rounded-full bg-primary/60" />
-                    <div className="w-1 h-1 rounded-full bg-primary/40" />
-                    <div className="w-1 h-1 rounded-full bg-primary/20" />
+                {/* Browser chrome */}
+                <div className="flex items-center gap-1.5 px-4 py-3 border-b border-gray-100 bg-gray-50">
+                  <div className="w-2.5 h-2.5 rounded-full bg-red-400/80" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-yellow-400/80" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-green-400/80" />
+                  <div className="ml-3 flex-1 bg-white rounded-md px-3 py-1 text-[11px] text-gray-400 border border-gray-200 font-mono truncate">
+                    ourrelationship.app
                   </div>
                 </div>
 
-                {/* Line numbers + code */}
-                <div className="flex font-mono text-sm leading-relaxed p-0 min-h-[280px]">
-                  {/* Gutter */}
-                  <div className="flex flex-col px-4 py-5 text-muted-foreground/30 text-right select-none border-r border-border/40 bg-background/20 min-w-[2.5rem]">
-                    {codeLines.map((_, i) => (
-                      <span key={i} className={i < visibleLines ? "opacity-100" : "opacity-0"} style={{ lineHeight: "1.75rem" }}>
-                        {i + 1}
-                      </span>
-                    ))}
+                {/* Mock website UI */}
+                <div className="bg-white p-5 space-y-3">
+                  {/* Nav */}
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="h-3 w-20 rounded-full bg-gray-900" />
+                    <div className="flex gap-2">
+                      <div className="h-2.5 w-10 rounded-full bg-gray-200" />
+                      <div className="h-2.5 w-10 rounded-full bg-gray-200" />
+                      <div className="h-2.5 w-14 rounded-full bg-primary" />
+                    </div>
                   </div>
 
-                  {/* Code */}
-                  <div className="flex-1 px-5 py-5 overflow-hidden">
-                    {codeLines.slice(0, visibleLines).map((line, i) => (
-                      <motion.div
-                        key={i}
-                        initial={{ opacity: 0, x: -6 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.18 }}
-                        className={`${line.color}`}
-                        style={{ paddingLeft: `${line.indent * 1.5}rem`, lineHeight: "1.75rem" }}
-                      >
-                        {line.content}
-                      </motion.div>
-                    ))}
-                    {visibleLines < codeLines.length && (
-                      <motion.span
-                        animate={{ opacity: [1, 0, 1] }}
-                        transition={{ duration: 0.8, repeat: Infinity }}
-                        className="inline-block w-2 h-[1.1em] bg-primary align-middle ml-0.5"
-                        style={{ paddingLeft: `${(codeLines[visibleLines]?.indent ?? 0) * 1.5}rem` }}
-                      />
-                    )}
+                  {/* Hero block */}
+                  <div className="rounded-xl p-5 bg-gradient-to-br from-orange-50 to-rose-50 border border-orange-100/60">
+                    <div className="h-3 w-32 rounded-full bg-primary/70 mb-2" />
+                    <div className="h-2 w-48 rounded-full bg-gray-300 mb-1" />
+                    <div className="h-2 w-36 rounded-full bg-gray-200 mb-4" />
+                    <div className="flex gap-2">
+                      <div className="h-7 w-20 rounded-full bg-gray-900" />
+                      <div className="h-7 w-20 rounded-full border border-gray-300" />
+                    </div>
                   </div>
-                </div>
 
-                {/* Status bar */}
-                <div className="flex items-center justify-between px-4 py-2 border-t border-border bg-background/30 text-xs font-mono text-muted-foreground">
-                  <div className="flex items-center gap-3">
-                    <span className="text-green-400">● TypeScript</span>
-                    <span>UTF-8</span>
+                  {/* Cards row */}
+                  <div className="grid grid-cols-3 gap-2">
+                    {[
+                      { icon: Globe, color: "bg-sky-100 text-sky-600", w: "w-14" },
+                      { icon: Layers, color: "bg-violet-100 text-violet-600", w: "w-10" },
+                      { icon: Zap, color: "bg-amber-100 text-amber-600", w: "w-12" },
+                    ].map(({ icon: Icon, color, w }, i) => (
+                      <div key={i} className="rounded-lg border border-gray-100 p-3 bg-gray-50">
+                        <div className={`w-6 h-6 rounded-md ${color} flex items-center justify-center mb-2`}>
+                          <Icon className="w-3.5 h-3.5" />
+                        </div>
+                        <div className={`h-2 ${w} rounded-full bg-gray-300 mb-1`} />
+                        <div className="h-1.5 w-8 rounded-full bg-gray-200" />
+                      </div>
+                    ))}
                   </div>
-                  <span>Ln {Math.min(visibleLines, codeLines.length)}, Col 1</span>
                 </div>
               </div>
 
-              {/* Floating tech badges */}
-              {techBadges.map((badge) => (
-                <motion.div
-                  key={badge.label}
-                  className="absolute px-3 py-1.5 rounded-full border border-primary/25 bg-card/90 backdrop-blur-sm text-xs font-mono font-medium text-primary shadow-lg"
-                  style={{ left: badge.x, top: badge.y, zIndex: 20 }}
-                  initial={{ opacity: 0, scale: 0.5 }}
-                  animate={{
-                    opacity: 1,
-                    scale: 1,
-                    y: [0, -7, 0],
-                  }}
-                  transition={{
-                    opacity: { delay: badge.delay, duration: 0.3 },
-                    scale:   { delay: badge.delay, duration: 0.3, type: "spring", stiffness: 200 },
-                    y:       { delay: badge.delay + 0.4, duration: 3 + badge.delay * 0.5, repeat: Infinity, ease: "easeInOut" },
-                  }}
-                >
-                  {badge.label}
-                </motion.div>
-              ))}
+              {/* Floating card: Star review */}
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 1.0, duration: 0.5, ease }}
+                className="absolute -right-8 top-6 bg-white rounded-xl shadow-[0_4px_24px_-6px_rgba(0,0,0,0.12)] border border-gray-100 p-3.5 w-52"
+              >
+                <div className="flex gap-0.5 mb-1.5">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+                  ))}
+                </div>
+                <p className="text-xs font-semibold text-gray-900 leading-snug mb-1">
+                  &ldquo;Best execution I&apos;ve seen.&rdquo;
+                </p>
+                <p className="text-[11px] text-gray-400">— Alex W., Underdog Digital</p>
+              </motion.div>
+
+              {/* Floating card: Experience badge */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 1.2, duration: 0.5, ease }}
+                className="absolute -left-8 bottom-10 bg-white rounded-xl shadow-[0_4px_24px_-6px_rgba(0,0,0,0.12)] border border-gray-100 p-3.5"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-orange-400 to-rose-500 flex items-center justify-center text-white font-bold text-sm shadow-sm">
+                    8+
+                  </div>
+                  <div>
+                    <div className="text-xs font-semibold text-gray-900">Years of</div>
+                    <div className="text-xs text-gray-400">Experience</div>
+                  </div>
+                </div>
+              </motion.div>
 
               {/* Open to work badge */}
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 2.2, duration: 0.4 }}
-                className="absolute -bottom-5 left-1/2 -translate-x-1/2 flex items-center gap-2 px-4 py-2.5 rounded-xl border border-green-500/30 bg-card/95 backdrop-blur-sm text-xs font-medium shadow-xl whitespace-nowrap"
+                transition={{ delay: 1.5, duration: 0.4, ease }}
+                className="absolute -bottom-5 left-1/2 -translate-x-1/2 flex items-center gap-2 px-4 py-2.5 rounded-full border border-gray-200 bg-white shadow-lg text-xs font-medium text-gray-700 whitespace-nowrap"
               >
                 <motion.span
                   className="w-2 h-2 rounded-full bg-green-400"
@@ -274,10 +267,34 @@ export default function Hero() {
                 />
                 Open to work · Manila, PH
               </motion.div>
+
             </div>
           </motion.div>
 
         </div>
+
+        {/* Stats strip */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.75, duration: 0.5, ease }}
+          className="mt-24 pt-8 border-t border-gray-200 grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-xl"
+        >
+          {[
+            { value: "8+",   label: "Years" },
+            { value: "60+",  label: "Clients" },
+            { value: "100+", label: "Projects" },
+            { value: "7",    label: "Platforms" },
+          ].map((stat) => (
+            <div key={stat.label}>
+              <div className="font-heading text-2xl sm:text-3xl font-bold gradient-text">
+                {stat.value}
+              </div>
+              <div className="text-sm text-muted-foreground mt-0.5">{stat.label}</div>
+            </div>
+          ))}
+        </motion.div>
+
       </div>
     </section>
   );

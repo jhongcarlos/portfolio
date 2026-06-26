@@ -25,32 +25,67 @@ const PARTICLES = [
   { x: 82, y: 65, size: 1, delay: 0.6,  dur: 9 },
 ];
 
+/** Soft pastel gradient background — light mode hero */
+export function PastelMeshBackground() {
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden>
+      <div className="absolute inset-0 bg-white" />
+
+      {/* Blob 1 — soft sage green, top-left */}
+      <div
+        className="mesh-blob-1 absolute -top-40 -left-40 w-[700px] h-[700px] rounded-full"
+        style={{
+          background: "radial-gradient(circle at 40% 40%, oklch(0.88 0.09 150) 0%, transparent 65%)",
+          filter: "blur(80px)",
+          opacity: 0.75,
+        }}
+      />
+
+      {/* Blob 2 — soft sky blue, top-right */}
+      <div
+        className="mesh-blob-2 absolute -top-20 -right-40 w-[650px] h-[650px] rounded-full"
+        style={{
+          background: "radial-gradient(circle at 60% 40%, oklch(0.88 0.08 215) 0%, transparent 65%)",
+          filter: "blur(90px)",
+          opacity: 0.65,
+        }}
+      />
+
+      {/* Blob 3 — soft peach/warm, bottom-center */}
+      <div
+        className="mesh-blob-3 absolute -bottom-40 left-1/3 w-[600px] h-[600px] rounded-full"
+        style={{
+          background: "radial-gradient(circle at 50% 60%, oklch(0.90 0.07 55) 0%, transparent 65%)",
+          filter: "blur(100px)",
+          opacity: 0.55,
+        }}
+      />
+    </div>
+  );
+}
+
+/** Dark cinematic mesh — dark mode */
 export function MeshGradientBackground() {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden>
       <div className="absolute inset-0 bg-background" />
 
-      {/* Blob 1 — brand orange-red */}
       <div
-        className="mesh-blob-1 absolute -top-32 -left-32 w-[700px] h-[700px] rounded-full opacity-[0.18] dark:opacity-[0.22]"
+        className="mesh-blob-1 absolute -top-32 -left-32 w-[700px] h-[700px] rounded-full opacity-[0.22]"
         style={{
           background: "radial-gradient(circle at 40% 40%, oklch(0.65 0.24 30) 0%, transparent 65%)",
           filter: "blur(60px)",
         }}
       />
-
-      {/* Blob 2 — warm amber */}
       <div
-        className="mesh-blob-2 absolute top-1/3 -right-40 w-[600px] h-[600px] rounded-full opacity-[0.14] dark:opacity-[0.18]"
+        className="mesh-blob-2 absolute top-1/3 -right-40 w-[600px] h-[600px] rounded-full opacity-[0.18]"
         style={{
           background: "radial-gradient(circle at 60% 50%, oklch(0.68 0.22 45) 0%, transparent 65%)",
           filter: "blur(70px)",
         }}
       />
-
-      {/* Blob 3 — deep red */}
       <div
-        className="mesh-blob-3 absolute -bottom-40 left-1/4 w-[500px] h-[500px] rounded-full opacity-[0.12] dark:opacity-[0.16]"
+        className="mesh-blob-3 absolute -bottom-40 left-1/4 w-[500px] h-[500px] rounded-full opacity-[0.16]"
         style={{
           background: "radial-gradient(circle at 50% 60%, oklch(0.55 0.22 18) 0%, transparent 65%)",
           filter: "blur(80px)",

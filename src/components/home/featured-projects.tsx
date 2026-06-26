@@ -8,7 +8,7 @@ import { featuredProjects } from "@/data/projects";
 
 export default function FeaturedProjects() {
   return (
-    <section className="py-20 sm:py-24 bg-secondary/20">
+    <section className="py-20 sm:py-24">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <StaggerContainer viewport staggerDelay={0.06} initialDelay={0}>
           <StaggerItem>
@@ -17,7 +17,7 @@ export default function FeaturedProjects() {
                 <p className="text-sm font-mono text-primary mb-2 tracking-widest uppercase">
                   Selected Work
                 </p>
-                <h2 className="font-heading text-3xl sm:text-4xl font-semibold">
+                <h2 className="font-heading text-3xl sm:text-4xl font-bold text-foreground">
                   Featured Projects
                 </h2>
               </div>
@@ -34,9 +34,12 @@ export default function FeaturedProjects() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {featuredProjects.map((project) => (
               <StaggerItem key={project.slug}>
-                <article className="group relative flex flex-col p-6 rounded-xl border border-border bg-card card-hover glow-card h-full">
+                <article className="group relative flex flex-col p-6 rounded-2xl border border-gray-100 bg-white shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 h-full">
                   <div className="flex items-center justify-between mb-4">
-                    <div />
+                    <div
+                      className="w-8 h-8 rounded-lg"
+                      style={{ background: `linear-gradient(135deg, ${project.accentColor ?? "#E8441C"} 0%, ${project.accentColor ?? "#F06830"} 100%)`, opacity: 0.15 }}
+                    />
                     {project.url && (
                       <a
                         href={project.url}
@@ -60,7 +63,7 @@ export default function FeaturedProjects() {
 
                   <div className="flex flex-wrap gap-1.5">
                     {project.stack.map((tag) => (
-                      <Badge key={tag} variant="secondary" className="text-xs font-mono">
+                      <Badge key={tag} variant="secondary" className="text-xs font-mono rounded-full">
                         {tag}
                       </Badge>
                     ))}
